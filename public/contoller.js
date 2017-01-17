@@ -229,7 +229,7 @@ app.controller('ecomSignUpController',function($scope,$http,$rootScope,$location
 		console.log(confirmPass);
 		console.log(pw==confirmPass);
 		if(!((name.length==0)&&(pw.length==0)&&(email.length==0)&&(addLine1.length==0)&&(addLine2.length==0)&&(state.length==0)&&(pc.length==0)&&(country.length==0)&&(confirmPass==pw)) ){
-			alert('please fill all the fields in the form specified...')
+			alert('please fill all the fields in the form specified...');
 		}else{
 		alert('user is registerd successfully !!!!');
 		}

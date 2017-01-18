@@ -482,5 +482,28 @@ app.controller('accountController',function($scope,$rootScope,$http){
         };
 });
 
-
+app.controller('CatalogueController', ['$scope', $routeParams',function ($scope, $routeParams) {
+				$scope.postdata = [];
+				$scope.option = "";
+				$scope.options = ["users","products","recommendations","cart"];
+				$scope.postUrl = "";
+                $scope.products_insert= function(){
+                    alert(JSON.stringify($scope.postdata));
+					if("users" == $scope.option){
+						$scope.postUrl = "/insertUsers";
+					}else if("products" == $scope.option){
+						$scope.postUrl = "/insertProduct";
+					}else if("recommendations" == $scope.option){
+						$scope.postUrl = "/insertRecommendedItems";
+					}else if("cart" == $scope.option){
+						$scope.postUrl = "/insertCartCollection";
+					}else{
+						alert("select a option...");
+						return;
+					}
+					$http.post($scope.postUrl,$scope.postdata).success(function(response){
+						 console.log(response);
+					 });   
+                };
+        }]); 
 

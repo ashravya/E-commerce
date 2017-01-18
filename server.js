@@ -11,6 +11,105 @@ var db3=mongojs('mongodb://userTOG:P6vE6SP4TMiiH3CF@mongodb/sampledb',['cartColl
 
 var bodyParser=require('body-parser');
 
+app.post('/insertUsers',function(req,res){
+    
+    console.log('i received account post'); 
+    console.log(req.body);
+	var postdata = req.body;
+    if(Array.isArray(postdata)){
+        postdata.forEach(function(item,index){
+			db.users.insert(item,function(err,doc){
+				console.log(doc);
+			});
+        });
+    }else if(typeof postdata == 'object'){
+		db.users.insert(postdata,function(err,doc){
+			console.log(doc);
+		});
+    }else{
+        console.log("in post: is something else");
+    }	
+
+});
+
+app.post('/insertProduct',function(req,res){
+    
+    console.log('i received insertProduct post');
+    console.log(req.body);
+	var postdata = req.body;
+    if(Array.isArray(postdata)){
+        postdata.forEach(function(item,index){
+			db1.product.insert(item,function(err,doc){
+				console.log(doc);
+				
+			});
+        });
+    }else if(typeof postdata == 'object'){
+		db1.product.insert(postdata,function(err,doc){
+			console.log(doc);
+		});
+    }else{
+        console.log("in post: is something else");
+        
+    }
+	res.json({});
+});
+
+app.post('/insertRecommendedItems',function(req,res){
+    
+    console.log('i received account post'); 
+    console.log(req.body);
+
+	var postdata = req.body;
+    if(Array.isArray(postdata)){
+        postdata.forEach(function(item,index){
+			db2.recommendedItems.insert(item,function(err,doc){
+				console.log(doc);
+				
+			});
+        });
+    }else if(typeof postdata == 'object'){
+		db2.recommendedItems.insert(postdata,function(err,doc){
+			console.log(doc);
+		});
+    }else{
+        console.log("in post: is something else");
+        
+    }	
+	res.json({});
+});
+
+app.post('/insertCartCollection',function(req,res){
+    
+    console.log('i received account post'); 
+    console.log(req.body);
+	
+	var postdata = req.body;
+    if(Array.isArray(postdata)){
+        postdata.forEach(function(item,index){
+			db3.cartCollection.insert(item,function(err,doc){
+				console.log(doc);
+				
+			});
+        });
+    }else if(typeof postdata == 'object'){
+		db2.recommendedItems.insert(postdata,function(err,doc){
+			console.log(doc);
+		});
+    }else{
+        console.log("in post: is something else");
+        
+    }	
+	res.json({});	
+});
+
+
+
+
+
+
+
+
 app.use(express.static(__dirname+'/public'));
 app.use(bodyParser.json());
 app.get('/ecomController',function(req,res){

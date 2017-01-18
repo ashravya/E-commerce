@@ -20,7 +20,7 @@ app.config(function($routeProvider){
 		
 		
 				.when('/login',{
-					templateUrl : 'Login.html',
+					templateUrl : 'login.html',
 					controller : 'ecomController'
 				})
 				.when('/signup',{

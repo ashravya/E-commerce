@@ -482,7 +482,7 @@ app.controller('accountController',function($scope,$rootScope,$http){
         };
 });
 
-app.controller('CatalogueController', ['$scope', $routeParams',function ($scope, $routeParams) {
+app.controller('CatalogueController', ['$scope', '$routeParams',function ($scope, $routeParams) {
 				$scope.postdata = [];
 				$scope.option = "";
 				$scope.options = ["users","products","recommendations","cart"];

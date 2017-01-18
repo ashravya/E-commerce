@@ -135,7 +135,7 @@ $http.get('/ecomController').success(function(response){
 			alert("Login Suucessful");
 			//$location.path("/");
 			
-			window.location="http://myshoppie-myshoppie.44fs.preview.openshiftapps.com/#/home";
+			window.location="http://myshoppie-myshoppie.44fs.preview.openshiftapps.com";
 	}
 	else {
 		//localStorage.setItem("userDetails",null  );

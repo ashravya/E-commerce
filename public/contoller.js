@@ -77,7 +77,7 @@ else {
 function logout(){
 	localStorage.setItem("logged","no");
 	alert("Thank you for visiting our site..!")
-	window.location="http://localhost:3000";
+	window.location="http://myshoppie-myshoppie.44fs.preview.openshiftapps.com/#/home";
 	
 };
 
@@ -135,7 +135,7 @@ $http.get('/ecomController').success(function(response){
 			alert("Login Suucessful");
 			//$location.path("/");
 			
-			window.location="http://localhost:8080";
+			window.location="http://myshoppie-myshoppie.44fs.preview.openshiftapps.com/#/home";
 	}
 	else {
 		//localStorage.setItem("userDetails",null  );
@@ -256,7 +256,7 @@ app.controller('ecomSignUpController',function($scope,$http,$rootScope,$location
 		console.log(users);
 		
 		$http.post('/ecomSignUpController',users);
-            window.location="http://localhost:8080/#/login";
+            window.location="http://myshoppie-myshoppie.44fs.preview.openshiftapps.com/#/login";
             
                     }
         else{

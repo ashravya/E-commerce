@@ -92,7 +92,10 @@ console.log('i m from controller');
 $http.get('/ecomController').success(function(response){
     console.log("in request ")
 	var users =response;
+   
 	$scope.login=function(){
+        var name=document.myForm["userName"].value;
+        var pass=document.myForm["passWord"].value;
 	var i;
 	var correctCounter=0;
 	var incorrectCounter=0;
@@ -112,6 +115,8 @@ $http.get('/ecomController').success(function(response){
 	
 	
 	}
+      //var name=$scope.userName; 
+        //var pass=$scope.passWord;
 	
 	}
 	if(correctCounter ==1)
@@ -130,14 +135,17 @@ $http.get('/ecomController').success(function(response){
 			alert("Login Suucessful");
 			//$location.path("/");
 			
-			window.location="http://localhost:3000";
+			window.location="http://localhost:8080";
 	}
 	else {
 		//localStorage.setItem("userDetails",null  );
 		 //localStorage.setItem("logged",false);
 			// localStorage.setItem("notlogged",true);
+        if(name.length==0||pass.length==0){
+            alert('please fill the fields...');
+        }else{
 		alert("Invalid user...please signUp!!");
-		//window.location="http://localhost:3000";
+        }//window.location="http://localhost:3000";
 		
 	}
         
@@ -184,9 +192,7 @@ app.controller('ecomSignUpController',function($scope,$http,$rootScope,$location
 			document.getElementById("statusP").innerHTML="*must include one special character,one numeric,one Uppercase and one Lowercase";
 		}
 	};
-	$scope.blockP=function(){
-				document.getElementById("statusP").style.display="none";
-			};
+
 	$scope.validateConfirmPassword=function()
 	{
 		CPassWord=document.myForm["confirmPassword"].value;
@@ -206,42 +212,60 @@ app.controller('ecomSignUpController',function($scope,$http,$rootScope,$location
 		}
 		//$scope.CPassword=CPassword;
 	}
-	$scope.blockC=function(){
-				document.getElementById("statusC").style.display="none";
-			};
+
 	$scope.validateemail=function(evt){
 					var emailElement=document.forms["myForm"]["email"];
 				var email=emailElement.value;
-				var emailpattern="^[a-zA-Z]+@[a-zA-Z]+\.com$";
-				if(email.match(emailpattern))
-					document.getElementById("statusE").innerHTML="valid EmailId";
-				else
+				var emailpattern="^[a-zA-Z]+@[a-zA-Z]+\.[a-zA-Z]{2,3}$";
+				if(email.match(emailpattern)){
+					document.getElementById("statusE").innerHTML="valid";
+                    document.getElementById("statusE").style="color:green";
+                        }
+				else{
 					document.getElementById("statusE").innerHTML="invalid EmailId";
-					
+                    document.getElementById("statusE").style="color:red";
+				}	
 
 	};
-	$scope.blockE=function(){
-				document.getElementById("statusE").style.display="none";
-	};
+
 	
-	$scope.submit=function(name,pw,confirmPass,email,addLine1,addLine2,city,state,pc,country){
-		console.log(pw);
-		console.log(confirmPass);
-		console.log(pw==confirmPass);
-		if(!((name.length==0)&&(pw.length==0)&&(email.length==0)&&(addLine1.length==0)&&(addLine2.length==0)&&(state.length==0)&&(pc.length==0)&&(country.length==0)&&(confirmPass==pw)) ){
-			alert('please fill all the fields in the form specified...');
-		}else{
-		alert('user is registerd successfully !!!!');
-		}
-		//$rootScope.name=name;
-		$rootScope.email=email;
+	$scope.submit=function(){
+        var emailElement=document.forms["myForm"]["email"].value;
+       var CPassWord=document.myForm["confirmPassword"].value;
+        var passWord=document.myForm["passWord"].value;
+         var addLine1=document.myForm["addLine1"].value;
+         var addLine2=document.myForm["addLine2"].value;
+         var city=document.myForm["city"].value;
+         var state=document.myForm["state"].value;
+        var pc=document.myForm["pc"].value;
+         var name=document.myForm["userName"].value;
+       var country=document.myForm["country"].value;
+		console.log(emailElement);
+        console.log(passWord);
+		console.log(CPassWord);
 		
-		var users={name:name,pass:pw,email:email,addLine1:addLine1,addLine2:addLine2,city:city,state:state,country:country,valid:true};
+    if((name.length==0)||(passWord.length==0)||(emailElement.length==0)||(addLine1.length==0)||(addLine2.length==0)||(state.length==0)||(pc.length==0)||(country.length==0)){
+        alert("enter the fields");
+	}
+    else{
+        if(passWord==CPassWord){
+            
+            
+            alert('user is registerd successfully !!!!');
+            var users={name:name,pass:passWord,email:emailElement,addLine1:addLine1,addLine2:addLine2,city:city,state:state,country:country};
 		console.log(users);
 		
 		$http.post('/ecomSignUpController',users);
-		window.location="http://localhost:3000#/login";
-	};
+            window.location="http://localhost:8080/#/login";
+            
+                    }
+        else{
+             alert("password did nt match");
+        }
+            
+        }
+    }
+    
 });
 //product display n retrieval controller
 var product;
@@ -449,7 +473,6 @@ app.controller('accountController',function($scope,$rootScope,$http){
          $http.post('/account',{name:localStorage.userDetails}).success(function(response){
              console.log(response);
              for(var i=0;i<response.length;i++){
-                 
                  orders.push(response[i].itemDetail);
              }
              console.log(orders);

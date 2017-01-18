@@ -5,9 +5,9 @@ var mongojs=require('mongojs');
 
 //var db=mongojs('users',['users']);
 var db = mongojs('mongodb://userTOG:P6vE6SP4TMiiH3CF@mongodb/sampledb', ['users'])
-var db1=mongojs('products',['product']);
-var db2=mongojs('products',['recommendedItems']);
-var db3=mongojs('cartDb',['cartCollection']);
+var db1=mongojs('mongodb://userTOG:P6vE6SP4TMiiH3CF@mongodb/sampledb',['product']);
+var db2=mongojs('mongodb://userTOG:P6vE6SP4TMiiH3CF@mongodb/sampledb',['recommendedItems']);
+var db3=mongojs('mongodb://userTOG:P6vE6SP4TMiiH3CF@mongodb/sampledb',['cartCollection']);
 
 var bodyParser=require('body-parser');
 

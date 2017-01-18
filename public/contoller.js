@@ -449,6 +449,7 @@ app.controller('accountController',function($scope,$rootScope,$http){
          $http.post('/account',{name:localStorage.userDetails}).success(function(response){
              console.log(response);
              for(var i=0;i<response.length;i++){
+                 
                  orders.push(response[i].itemDetail);
              }
              console.log(orders);

@@ -3,7 +3,8 @@ var express=require('express');
 var app=express();
 var mongojs=require('mongojs');
 
-var db=mongojs('users',['users']);
+//var db=mongojs('users',['users']);
+var db = mongojs('mongodb://userTOG:P6vE6SP4TMiiH3CF@mongodb/sampledb', ['users'])
 var db1=mongojs('products',['product']);
 var db2=mongojs('products',['recommendedItems']);
 var db3=mongojs('cartDb',['cartCollection']);
@@ -94,6 +95,7 @@ app.post('/checkout',function(req,res){
        
         //console.log(doc);
         userDetails=doc;
+        console.log(req.body.prodQuantity);
         //console.log(userDetails);
         db1.product.update({productName:req.body.prodName},{$set:{count:req.body.prodQuantity}});
         db1.product.findOne({productName:req.body.prodName},function(err,doc){
@@ -122,5 +124,5 @@ app.post('/account',function(req,res){
         res.json(doc);
     });
 });
-app.listen(3000);
+app.listen(8080);
 console.log("i m listening at port 3000");

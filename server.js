@@ -3,10 +3,10 @@ var express=require('express');
 var app=express();
 var mongojs=require('mongojs');
 
-var db = mongojs('mongodb://admin:admin@ds117819.mlab.com:17819/heroku_pgj4j43g', ['users'])
-var db1=mongojs('mongodb://admin:admin@ds117819.mlab.com:17819/heroku_pgj4j43g',['product']);
-var db2=mongojs('mongodb://admin:admin@ds117819.mlab.com:17819/heroku_pgj4j43g',['recommendedItems']);
-var db3=mongojs('mongodb://admin:admin@ds117819.mlab.com:17819/heroku_pgj4j43g',['cartCollection']);
+var db = mongojs('mongodb://admin:admin@ds117909.mlab.com:17909/heroku_034x5vbz', ['users'])
+var db1=mongojs('mongodb://admin:admin@ds117909.mlab.com:17909/heroku_034x5vbz',['product']);
+var db2=mongojs('mongodb://admin:admin@ds117909.mlab.com:17909/heroku_034x5vbz',['recommendedItems']);
+var db3=mongojs('mongodb://admin:admin@ds117909.mlab.com:17909/heroku_034x5vbz',['cartCollection']);
 
 var bodyParser=require('body-parser');
 

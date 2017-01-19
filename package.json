@@ -1,7 +1,7 @@
 {
   "name": "e-commerce",
   "version": "1.0.0",
-  "description": "MyShoppie",
+  "description": "",
   "main": "server.js",
   "dependencies": {
     "body-parser": "^1.15.2",

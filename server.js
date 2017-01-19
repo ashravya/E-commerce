@@ -118,6 +118,6 @@ app.post('/account',function(req,res){
 
 app.listen(process.env.PORT||5000,function(err)
 {
-	console.log("running server on port "+port);
+	console.log("running server on port ");
 	
 }); 

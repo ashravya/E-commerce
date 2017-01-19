@@ -76,7 +76,7 @@ else {
 function logout(){
 	localStorage.setItem("logged","no");
 	alert("Thank you for visiting our site..!")
-	window.location="http://myshoppie-myshoppie.44fs.preview.openshiftapps.com/#/home";
+	window.location="https://ecomapplication.herokuapp.com/";
 	
 };
 
@@ -129,7 +129,7 @@ $http.get('/ecomController').success(function(response){
 			alert("Login Suucessful");
 			
 			
-			window.location="http://myshoppie-myshoppie.44fs.preview.openshiftapps.com";
+			window.location="https://ecomapplication.herokuapp.com/";
 	}
 	else {
 		
@@ -245,7 +245,7 @@ app.controller('ecomSignUpController',function($scope,$http,$rootScope,$location
 		
 		
 		$http.post('/ecomSignUpController',users);
-            window.location="http://myshoppie-myshoppie.44fs.preview.openshiftapps.com/#/login";
+            window.location="https://ecomapplication.herokuapp.com/#/login";
             
                     }
         else{

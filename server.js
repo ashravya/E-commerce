@@ -223,5 +223,11 @@ app.post('/account',function(req,res){
         res.json(doc);
     });
 });
-app.listen(8080);
-console.log("i m listening at port 3000");
+//app.listen(8080);
+//console.log("i m listening at port 3000");
+
+app.listen(process.env.PORT||5000,function(err)
+{
+	console.log("running server on port "+port);
+	
+});  

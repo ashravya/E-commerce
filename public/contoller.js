@@ -289,7 +289,7 @@ app.controller('productController',function($rootScope,$location,$scope,$http){
 		});
 		
 		$scope.search=function(){
-			
+			$location.path("/home"); 
 			if($scope.searchItem){
 				
 			

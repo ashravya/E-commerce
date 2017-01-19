@@ -4,10 +4,10 @@ var app=express();
 var mongojs=require('mongojs');
 
 //var db=mongojs('users',['users']);
-var db = mongojs('mongodb://userTOG:P6vE6SP4TMiiH3CF@mongodb/sampledb', ['users'])
-var db1=mongojs('mongodb://userTOG:P6vE6SP4TMiiH3CF@mongodb/sampledb',['product']);
-var db2=mongojs('mongodb://userTOG:P6vE6SP4TMiiH3CF@mongodb/sampledb',['recommendedItems']);
-var db3=mongojs('mongodb://userTOG:P6vE6SP4TMiiH3CF@mongodb/sampledb',['cartCollection']);
+var db = mongojs('mongodb://admin:admin@ds117819.mlab.com:17819/heroku_pgj4j43g', ['users'])
+var db1=mongojs('mongodb://admin:admin@ds117819.mlab.com:17819/heroku_pgj4j43g',['product']);
+var db2=mongojs('mongodb://admin:admin@ds117819.mlab.com:17819/heroku_pgj4j43g',['recommendedItems']);
+var db3=mongojs('mongodb://admin:admin@ds117819.mlab.com:17819/heroku_pgj4j43g',['cartCollection']);
 
 var bodyParser=require('body-parser');
 
